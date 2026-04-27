@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-04-27
+
+### Fixed
+- Removed all residual `ge=` and `le=` restriction bounds (on `speed`, `n_gear`, `rpm`, `brake`, `throttle`, and `position`) to prevent validation crashes from raw sensor noise mapping.
+
 ## [0.1.2] - 2026-04-27
 
 ### Fixed
@@ -46,7 +51,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Pre-commit hooks configuration.
 - mkdocs-material documentation site.
 
-[Unreleased]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.2...HEAD
+[Unreleased]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/DivyamSamarwal/pyopenf1/releases/tag/v0.1.0

@@ -89,5 +89,5 @@ class Position(BaseModel):
     date: datetime = Field(..., description="Position timestamp.")
     driver_number: int = Field(..., description="Unique driver number.")
     meeting_key: int = Field(..., description="Unique meeting key.")
-    position: int = Field(..., ge=1, description="Current position.")
+    position: int = Field(..., description="Current position.")
     session_key: int = Field(..., description="Unique session key.")
