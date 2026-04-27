@@ -16,7 +16,7 @@ handles:
 from __future__ import annotations
 
 import logging
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 import httpx
 from tenacity import (
@@ -26,7 +26,8 @@ from tenacity import (
     wait_exponential,
 )
 
-from pyopenf1.core.cache import TTLCache
+if TYPE_CHECKING:
+    from pyopenf1.core.cache import TTLCache
 from pyopenf1.core.rate_limiter import RateLimiter
 from pyopenf1.exceptions import (
     APIError,
