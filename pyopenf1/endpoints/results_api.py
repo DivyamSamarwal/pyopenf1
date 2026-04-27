@@ -24,7 +24,11 @@ class ResultsAPI:
         self._http = http
 
     async def get_session_results(
-        self, *, session_key: int | None = None, driver_number: int | None = None, **extra_params: Any
+        self,
+        *,
+        session_key: int | None = None,
+        driver_number: int | None = None,
+        **extra_params: Any,
     ) -> list[SessionResult]:
         """Fetch session results from ``/session_result``."""
         params: dict[str, Any] = {**extra_params}

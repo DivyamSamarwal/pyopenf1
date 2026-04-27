@@ -38,7 +38,11 @@ class RaceAPI:
         return _race_control_adapter.validate_python(raw)
 
     async def get_pit_stops(
-        self, *, session_key: int | None = None, driver_number: int | None = None, **extra_params: Any
+        self,
+        *,
+        session_key: int | None = None,
+        driver_number: int | None = None,
+        **extra_params: Any,
     ) -> list[Pit]:
         """Fetch pit stop data from ``/pit``."""
         params: dict[str, Any] = {**extra_params}
@@ -50,7 +54,11 @@ class RaceAPI:
         return _pit_adapter.validate_python(raw)
 
     async def get_stints(
-        self, *, session_key: int | None = None, driver_number: int | None = None, **extra_params: Any
+        self,
+        *,
+        session_key: int | None = None,
+        driver_number: int | None = None,
+        **extra_params: Any,
     ) -> list[Stint]:
         """Fetch stint data from ``/stints``."""
         params: dict[str, Any] = {**extra_params}

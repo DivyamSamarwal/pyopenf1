@@ -9,7 +9,9 @@ from pydantic import TypeAdapter
 from pyopenf1.core.http_client import BaseHTTPClient  # noqa: TC001
 from pyopenf1.models.championship import ChampionshipDriver, ChampionshipTeam
 
-_champ_driver_adapter: TypeAdapter[list[ChampionshipDriver]] = TypeAdapter(list[ChampionshipDriver])
+_champ_driver_adapter: TypeAdapter[list[ChampionshipDriver]] = TypeAdapter(
+    list[ChampionshipDriver]
+)
 _champ_team_adapter: TypeAdapter[list[ChampionshipTeam]] = TypeAdapter(list[ChampionshipTeam])
 
 
@@ -24,7 +26,11 @@ class ChampionshipAPI:
         self._http = http
 
     async def get_drivers_championship(
-        self, *, session_key: int | None = None, driver_number: int | None = None, **extra_params: Any
+        self,
+        *,
+        session_key: int | None = None,
+        driver_number: int | None = None,
+        **extra_params: Any,
     ) -> list[ChampionshipDriver]:
         """Fetch driver championship standings from ``/championship_drivers``."""
         params: dict[str, Any] = {**extra_params}

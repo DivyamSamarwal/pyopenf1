@@ -164,9 +164,7 @@ def laps(
 @click.option("--meeting", type=int, default=None, help="Meeting key.")
 @click.option("--format", "fmt", type=click.Choice(["json", "table", "csv"]), default="table")
 @click.option("--output", "output_file", type=str, default=None, help="Output file path.")
-def weather(
-    session: int | None, meeting: int | None, fmt: str, output_file: str | None
-) -> None:
+def weather(session: int | None, meeting: int | None, fmt: str, output_file: str | None) -> None:
     """Fetch weather data."""
 
     async def _fetch() -> list[Any]:
@@ -196,9 +194,7 @@ def stints(driver: int | None, session: int | None, fmt: str, output_file: str |
 @click.option("--driver", type=int, default=None, help="Driver number.")
 @click.option("--format", "fmt", type=click.Choice(["json", "table", "csv"]), default="table")
 @click.option("--output", "output_file", type=str, default=None, help="Output file path.")
-def team_radio(
-    driver: int | None, session: int | None, fmt: str, output_file: str | None
-) -> None:
+def team_radio(driver: int | None, session: int | None, fmt: str, output_file: str | None) -> None:
     """Fetch team radio communications."""
 
     async def _fetch() -> list[Any]:

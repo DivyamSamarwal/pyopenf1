@@ -68,7 +68,8 @@ class TestAsyncOpenF1Client:
 
         async with AsyncOpenF1Client() as client:
             result = await client.telemetry.get_car_data(
-                driver_number=55, session_key=9159,
+                driver_number=55,
+                session_key=9159,
             )
 
         assert len(result) == 2
@@ -97,7 +98,9 @@ class TestAsyncOpenF1Client:
         """HTTP 429 triggers a RateLimitError."""
         respx.get("https://api.openf1.org/v1/car_data").mock(
             return_value=httpx.Response(
-                429, json={"detail": "Too many requests"}, headers={"Retry-After": "5"},
+                429,
+                json={"detail": "Too many requests"},
+                headers={"Retry-After": "5"},
             ),
         )
 

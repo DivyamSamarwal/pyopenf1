@@ -23,7 +23,11 @@ class WeatherAPI:
         self._http = http
 
     async def get_weather(
-        self, *, session_key: int | None = None, meeting_key: int | None = None, **extra_params: Any
+        self,
+        *,
+        session_key: int | None = None,
+        meeting_key: int | None = None,
+        **extra_params: Any,
     ) -> list[Weather]:
         """Fetch weather data from ``/weather``."""
         params: dict[str, Any] = {**extra_params}
