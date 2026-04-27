@@ -5,9 +5,9 @@
   </p>
   <p align="center">
     <a href="https://pypi.org/project/pyopenf1/"><img src="https://img.shields.io/pypi/v/pyopenf1?color=blue&label=PyPI" alt="PyPI"></a>
-    <a href="https://github.com/divya/pyopenf1/actions"><img src="https://img.shields.io/github/actions/workflow/status/divya/pyopenf1/ci.yml?branch=main&label=CI" alt="CI"></a>
+    <a href="https://github.com/DivyamSamarwal/pyopenf1/actions"><img src="https://img.shields.io/github/actions/workflow/status/DivyamSamarwal/pyopenf1/ci.yml?branch=main&label=CI" alt="CI"></a>
     <a href="https://pypi.org/project/pyopenf1/"><img src="https://img.shields.io/pypi/pyversions/pyopenf1" alt="Python versions"></a>
-    <a href="https://github.com/divya/pyopenf1/blob/main/LICENSE"><img src="https://img.shields.io/github/license/divya/pyopenf1" alt="License"></a>
+    <a href="https://github.com/DivyamSamarwal/pyopenf1/blob/main/LICENSE"><img src="https://img.shields.io/github/license/DivyamSamarwal/pyopenf1" alt="License"></a>
   </p>
 </p>
 

@@ -5,9 +5,9 @@ description = "A production-grade, asynchronous Python API wrapper for the OpenF
 authors = ["DIVYA <divya@example.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/divya/pyopenf1"
-repository = "https://github.com/divya/pyopenf1"
-documentation = "https://github.com/divya/pyopenf1#readme"
+homepage = "https://github.com/DivyamSamarwal/pyopenf1"
+repository = "https://github.com/DivyamSamarwal/pyopenf1"
+documentation = "https://github.com/DivyamSamarwal/pyopenf1#readme"
 keywords = ["formula1", "f1", "openf1", "api", "async", "telemetry", "motorsport"]
 classifiers = [
     "Development Status :: 3 - Alpha",

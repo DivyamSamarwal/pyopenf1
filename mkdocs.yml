@@ -1,8 +1,8 @@
 site_name: pyopenf1
 site_description: A production-grade, asynchronous Python wrapper for the OpenF1 API.
-site_url: https://divya.github.io/pyopenf1
-repo_url: https://github.com/divya/pyopenf1
-repo_name: divya/pyopenf1
+site_url: https://DivyamSamarwal.github.io/pyopenf1
+repo_url: https://github.com/DivyamSamarwal/pyopenf1
+repo_name: DivyamSamarwal/pyopenf1
 
 theme:
   name: material

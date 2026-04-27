@@ -36,5 +36,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Pre-commit hooks configuration.
 - mkdocs-material documentation site.
 
-[Unreleased]: https://github.com/divya/pyopenf1/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/divya/pyopenf1/releases/tag/v0.1.0
+[Unreleased]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/DivyamSamarwal/pyopenf1/releases/tag/v0.1.0
