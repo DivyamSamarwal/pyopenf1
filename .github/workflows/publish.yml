@@ -14,6 +14,7 @@ jobs:
     environment: pypi
     permissions:
       id-token: write  # Required for trusted publishing
+      contents: read   # Required for actions/checkout
 
     steps:
       - name: Checkout repository
