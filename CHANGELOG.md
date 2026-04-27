@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-04-27
+
+### Fixed
+- Fixed author metadata on PyPI showing incorrect placeholder name.
+
 ## [0.1.0] - 2026-04-27
 
 ### Added
@@ -36,5 +41,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Pre-commit hooks configuration.
 - mkdocs-material documentation site.
 
-[Unreleased]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/DivyamSamarwal/pyopenf1/releases/tag/v0.1.0
