@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-04-27
+
+### Fixed
+- Removed `le=100` Pydantic bounds on `brake` and `throttle` in `CarData` to prevent validation errors from F1 telemetry sensor noise returning values like `104`.
+
 ## [0.1.1] - 2026-04-27
 
 ### Fixed
@@ -41,6 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Pre-commit hooks configuration.
 - mkdocs-material documentation site.
 
-[Unreleased]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/DivyamSamarwal/pyopenf1/releases/tag/v0.1.0

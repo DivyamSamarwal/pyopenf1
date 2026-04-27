@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyopenf1"
-version = "0.1.1"
+version = "0.1.2"
 description = "A production-grade, asynchronous Python API wrapper for the OpenF1 API."
 authors = ["Divyam Samarwal <divyamsamarwal@gmail.com>"]
 license = "MIT"

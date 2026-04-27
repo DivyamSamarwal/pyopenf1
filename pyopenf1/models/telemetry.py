@@ -35,7 +35,7 @@ class CarData(BaseModel):
         str_strip_whitespace=True,
     )
 
-    brake: int = Field(..., ge=0, le=100, description="Brake percentage.")
+    brake: int = Field(..., ge=0, description="Brake percentage.")
     date: datetime = Field(..., description="ISO-8601 timestamp of the sample.")
     driver_number: int = Field(..., description="Unique driver number.")
     drs: int = Field(..., description="DRS status flag.")
@@ -44,7 +44,7 @@ class CarData(BaseModel):
     rpm: int = Field(..., ge=0, description="Engine RPM.")
     session_key: int = Field(..., description="Unique session key.")
     speed: int = Field(..., ge=0, description="Car speed in km/h.")
-    throttle: int = Field(..., ge=0, le=100, description="Throttle percentage.")
+    throttle: int = Field(..., ge=0, description="Throttle percentage.")
 
 
 class Location(BaseModel):
