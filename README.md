@@ -5,10 +5,13 @@
   </p>
   <p align="center">
     <a href="https://pypi.org/project/pyopenf1/"><img src="https://img.shields.io/pypi/v/pyopenf1?color=blue&label=PyPI" alt="PyPI"></a>
+    <a href="https://pepy.tech/project/pyopenf1"><img src="https://static.pepy.tech/badge/pyopenf1" alt="Downloads"></a>
     <a href="https://github.com/DivyamSamarwal/pyopenf1/actions"><img src="https://img.shields.io/github/actions/workflow/status/DivyamSamarwal/pyopenf1/ci.yml?branch=main&label=CI" alt="CI"></a>
     <a href="https://pypi.org/project/pyopenf1/"><img src="https://img.shields.io/pypi/pyversions/pyopenf1" alt="Python versions"></a>
     <a href="https://github.com/DivyamSamarwal/pyopenf1/blob/main/LICENSE"><img src="https://img.shields.io/github/license/DivyamSamarwal/pyopenf1" alt="License"></a>
   </p>
+  
+  ![Dashboard Placeholder](/assets/dashboard_placeholder.png)
 </p>
 
 ---
@@ -22,8 +25,10 @@
 - **Auto-Retry** — Exponential backoff on 429/5xx via `tenacity`.
 - **Rate Limiting** — Built-in client-side throttle (3 req/s free tier).
 - **Response Caching** — Optional in-memory TTL cache.
+- **Interactive TUI** — A live terminal dashboard (`pyopenf1 dashboard`).
+- **DataFrame Support** — Native integration with `pandas` and `polars`.
+- **Advanced Analytics** — High-level helpers for fastest laps and pit strategies.
 - **CLI Tool** — Query the API from your terminal.
-- **DataFrame Support** — Optional `pandas` integration.
 - **Production-Ready** — Custom exceptions, structured logging, connection pooling.
 
 ## 📦 Installation
@@ -32,9 +37,12 @@
 pip install pyopenf1
 ```
 
-With pandas support:
+With optional extras:
 ```bash
-pip install pyopenf1[pandas]
+pip install pyopenf1[pandas]   # For pandas DataFrames
+pip install pyopenf1[polars]   # For polars DataFrames
+pip install pyopenf1[tui]      # For the interactive dashboard
+pip install pyopenf1[all]      # To install everything
 ```
 
 ## 🚀 Quickstart
@@ -79,15 +87,35 @@ pyopenf1 drivers --session 9158 --format json
 pyopenf1 weather --meeting 1208 --format csv --output weather.csv
 ```
 
-### DataFrame
+### DataFrames (Pandas & Polars)
 
 ```python
+from pyopenf1.ext.polars import to_polars
 from pyopenf1.ext.pandas import to_dataframe
 
 data = await client.telemetry.get_car_data(driver_number=1)
-df = to_dataframe(data)
-print(df.describe())
+
+# To Polars
+df_pl = to_polars(data)
+
+# To Pandas
+df_pd = to_dataframe(data)
 ```
+
+### High-Level Analytics
+
+```python
+from pyopenf1.analytics import Analytics
+
+async with AsyncOpenF1Client() as client:
+    analytics = Analytics(client)
+    
+    fastest = await analytics.get_fastest_lap(session_key=9158)
+    print(fastest.lap_duration)
+```
+
+### Jupyter Notebook Cookbooks
+Check out the `examples/cookbooks/` directory for interactive tutorials, like plotting track maps with telemetry data!
 
 ## ⚙️ Configuration
 

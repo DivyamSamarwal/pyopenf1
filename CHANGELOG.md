@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-06-17
+
+### Added
+- **Polars Integration**: Optional `[polars]` extra with `pyopenf1.ext.polars.to_polars()` for blazing-fast DataFrames.
+- **TUI Dashboard**: Interactive terminal UI (`pyopenf1 dashboard`) using Textual (requires `[tui]` extra).
+- **Analytics Helpers**: New `pyopenf1.analytics.Analytics` class with helper methods for fastest laps and pit strategies.
+- **Jupyter Cookbooks**: Added F1 track mapping tutorials in `examples/cookbooks/`.
+- Dynamic `User-Agent` reading from `__version__`.
+
 ## [0.1.3] - 2026-04-27
 
 ### Fixed
@@ -51,7 +60,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Pre-commit hooks configuration.
 - mkdocs-material documentation site.
 
-[Unreleased]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.3...HEAD
+[Unreleased]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.3...v0.2.0
 [0.1.3]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/DivyamSamarwal/pyopenf1/compare/v0.1.0...v0.1.1

@@ -56,11 +56,11 @@ class OpenF1Client:
             max_per_second=max_per_second,
             max_per_minute=max_per_minute,
         )
-        self._loop: asyncio.AbstractEventLoop | None = None
+        self._loop: asyncio.AbstractEventLoop = asyncio.new_event_loop()
 
     def _get_loop(self) -> asyncio.AbstractEventLoop:
-        """Get or create an event loop for sync execution."""
-        if self._loop is None or self._loop.is_closed():
+        """Get or re-create the event loop if it has been closed."""
+        if self._loop.is_closed():
             self._loop = asyncio.new_event_loop()
         return self._loop
 

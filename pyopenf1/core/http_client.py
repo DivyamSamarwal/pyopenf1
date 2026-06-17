@@ -28,6 +28,7 @@ from tenacity import (
 
 if TYPE_CHECKING:
     from pyopenf1.core.cache import TTLCache
+from pyopenf1 import __version__
 from pyopenf1.core.rate_limiter import RateLimiter
 from pyopenf1.exceptions import (
     APIError,
@@ -86,7 +87,7 @@ class BaseHTTPClient:
     ) -> None:
         default_headers: dict[str, str] = {
             "Accept": "application/json",
-            "User-Agent": "pyopenf1/0.1.0",
+            "User-Agent": f"pyopenf1/{__version__}",
         }
         if headers:
             default_headers.update(headers)

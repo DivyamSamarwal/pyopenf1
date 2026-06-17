@@ -13,6 +13,8 @@ Usage::
     asyncio.run(main())
 """
 
+__version__ = "0.2.0"
+
 from pyopenf1.client import AsyncOpenF1Client
 from pyopenf1.exceptions import (
     APIError,
@@ -33,6 +35,6 @@ __all__ = [
     "PyOpenF1Error",
     "RateLimitError",
     "ServerError",
-]
 
-__version__ = "0.1.0"
+
+]

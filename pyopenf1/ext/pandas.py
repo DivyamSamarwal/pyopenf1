@@ -44,7 +44,7 @@ def to_dataframe(models: list[Any]) -> Any:
         ) from exc
 
     if not models:
-        raise ValueError("Cannot create DataFrame from an empty list.")
+        return pd.DataFrame()
 
-    rows = [m.model_dump() for m in models]
+    rows = [m.model_dump(mode="json") for m in models]
     return pd.DataFrame(rows)

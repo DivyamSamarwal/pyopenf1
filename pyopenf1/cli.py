@@ -206,5 +206,18 @@ def team_radio(driver: int | None, session: int | None, fmt: str, output_file: s
     _output(_run(_fetch()), fmt, output_file)
 
 
+@cli.command()
+@click.option("--session", type=int, default=None, help="Session key.")
+def dashboard(session: int | None) -> None:
+    """Launch the interactive TUI dashboard."""
+    try:
+        from pyopenf1.tui import run_dashboard
+    except ImportError:
+        click.echo("TUI dependencies not installed. Run: pip install pyopenf1[tui]")
+        return
+
+    run_dashboard(session_key=session)
+
+
 if __name__ == "__main__":
     cli()

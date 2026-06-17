@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyopenf1"
-version = "0.1.3"
+version = "0.2.0"
 description = "A production-grade, asynchronous Python API wrapper for the OpenF1 API."
 authors = ["Divyam Samarwal <divyamsamarwal@gmail.com>"]
 license = "MIT"
@@ -34,6 +34,9 @@ click = "^8.1"
 
 [tool.poetry.extras]
 pandas = ["pandas"]
+polars = ["polars"]
+tui = ["rich", "textual"]
+all = ["pandas", "polars", "rich", "textual"]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0"
@@ -42,6 +45,11 @@ respx = "^0.22"
 ruff = "^0.8"
 mypy = "^1.13"
 pandas = "^2.0"
+polars = "^1.0"
+rich = "^13.7"
+textual = "^0.83"
+jupyter = "^1.1"
+matplotlib = "^3.9"
 mkdocs-material = "^9.5"
 mkdocstrings = {extras = ["python"], version = "^0.27"}
 
