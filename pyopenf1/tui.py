@@ -10,7 +10,7 @@ from textual.widgets import DataTable, Footer, Header, Label
 from pyopenf1.client import AsyncOpenF1Client
 
 
-class DashboardApp(App[None]):
+class DashboardApp(App[None]):  # type: ignore[misc]
     """A Textual TUI for viewing OpenF1 data.
 
     Currently supports viewing driver standings for a specific session.
@@ -53,7 +53,7 @@ class DashboardApp(App[None]):
 
     def action_toggle_dark(self) -> None:
         """An action to toggle dark mode."""
-        self.dark = not self.dark
+        self.dark = not self.dark  # type: ignore[has-type]
 
 
 def run_dashboard(session_key: int | None = None) -> None:

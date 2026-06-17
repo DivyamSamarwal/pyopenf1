@@ -35,6 +35,4 @@ __all__ = [
     "PyOpenF1Error",
     "RateLimitError",
     "ServerError",
-
-
 ]

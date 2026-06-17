@@ -104,6 +104,18 @@ ignore_missing_imports = true
 module = ["pandas.*"]
 ignore_missing_imports = true
 
+[[tool.mypy.overrides]]
+module = ["polars.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["textual.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["rich.*"]
+ignore_missing_imports = true
+
 # ---------------------------------------------------------------------------
 # pytest
 # ---------------------------------------------------------------------------

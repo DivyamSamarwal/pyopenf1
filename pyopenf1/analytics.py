@@ -19,7 +19,9 @@ class Analytics:
     def __init__(self, client: AsyncOpenF1Client) -> None:
         self.client = client
 
-    async def get_fastest_lap(self, session_key: int, driver_number: int | None = None) -> Lap | None:
+    async def get_fastest_lap(
+        self, session_key: int, driver_number: int | None = None
+    ) -> Lap | None:
         """Find the fastest lap in a session.
 
         If ``driver_number`` is provided, finds the fastest lap for that specific driver.
@@ -63,11 +65,15 @@ class Analytics:
             if stint.driver_number not in strategy:
                 strategy[stint.driver_number] = []
 
-            strategy[stint.driver_number].append({
-                "stint_number": stint.stint_number,
-                "compound": stint.compound,
-                "tyre_age_at_start": stint.tyre_age_at_start,
-                "laps": stint.lap_end - stint.lap_start + 1 if stint.lap_end and stint.lap_start else None,
-            })
+            strategy[stint.driver_number].append(
+                {
+                    "stint_number": stint.stint_number,
+                    "compound": stint.compound,
+                    "tyre_age_at_start": stint.tyre_age_at_start,
+                    "laps": stint.lap_end - stint.lap_start + 1
+                    if stint.lap_end and stint.lap_start
+                    else None,
+                }
+            )
 
         return strategy
