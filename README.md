@@ -1,205 +1,217 @@
-<p align="center">
-  <h1 align="center">🏎️ pyopenf1</h1>
-  <p align="center">
-    A production-grade, asynchronous Python wrapper for the <a href="https://openf1.org">OpenF1 API</a>.
-  </p>
-  <p align="center">
-    <a href="https://pypi.org/project/pyopenf1/"><img src="https://img.shields.io/pypi/v/pyopenf1?color=blue&label=PyPI" alt="PyPI"></a>
-    <a href="https://pepy.tech/project/pyopenf1"><img src="https://static.pepy.tech/badge/pyopenf1" alt="Downloads"></a>
-    <a href="https://github.com/DivyamSamarwal/pyopenf1/actions"><img src="https://img.shields.io/github/actions/workflow/status/DivyamSamarwal/pyopenf1/ci.yml?branch=main&label=CI" alt="CI"></a>
-    <a href="https://pypi.org/project/pyopenf1/"><img src="https://img.shields.io/pypi/pyversions/pyopenf1" alt="Python versions"></a>
-    <a href="https://github.com/DivyamSamarwal/pyopenf1/blob/main/LICENSE"><img src="https://img.shields.io/github/license/DivyamSamarwal/pyopenf1" alt="License"></a>
-  </p>
-  
-  ![Dashboard Placeholder](/assets/dashboard_placeholder.png)
-</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/DivyamSamarwal/pyopenf1/main/assets/logo.png" alt="pyopenf1 Logo" width="200" onerror="this.style.display='none'">
+
+  # 🏎️ pyopenf1
+
+  **A production-grade, asynchronous Python wrapper for the [OpenF1 API](https://openf1.org).**
+
+  [![PyPI - Version](https://img.shields.io/pypi/v/pyopenf1?style=for-the-badge&color=blue)](https://pypi.org/project/pyopenf1/)
+  [![PyPI - Downloads](https://img.shields.io/pypi/dm/pyopenf1?style=for-the-badge&color=green)](https://pypi.org/project/pyopenf1/)
+  [![Python Versions](https://img.shields.io/pypi/pyversions/pyopenf1?style=for-the-badge)](https://pypi.org/project/pyopenf1/)
+  [![CI Status](https://img.shields.io/github/actions/workflow/status/DivyamSamarwal/pyopenf1/ci.yml?branch=main&style=for-the-badge&label=CI)](https://github.com/DivyamSamarwal/pyopenf1/actions)
+  [![License](https://img.shields.io/github/license/DivyamSamarwal/pyopenf1?style=for-the-badge)](https://github.com/DivyamSamarwal/pyopenf1/blob/main/LICENSE)
+
+  <br />
+
+  *[Read the Documentation](https://github.com/DivyamSamarwal/pyopenf1#readme) • [Report a Bug](https://github.com/DivyamSamarwal/pyopenf1/issues)*
+</div>
+
+<hr />
+
+## ✨ Why `pyopenf1`?
+
+`pyopenf1` is designed for performance, reliability, and developer experience. Whether you're building a real-time race dashboard, training machine learning models on telemetry, or just having fun with F1 data, this library gives you everything you need.
+
+> 📊 **First-Class Data Integration**: Convert raw telemetry into Pandas or Polars DataFrames with a single method call.
+>
+> 🚀 **Built for Speed**: Fully asynchronous, connection pooling, and in-memory TTL caching.
+> 
+> 🛡️ **Production Ready**: Pydantic V2 validation, exponential backoff retries, and strict rate-limiting built-in.
 
 ---
 
-## ✨ Features
+## ⚡ Features Overview
 
-- **Fully Async** — Built on `httpx.AsyncClient` with first-class `async/await` support.
-- **Sync Wrapper** — `OpenF1Client` for users who don't need async.
-- **All 18 Endpoints** — Complete coverage: telemetry, laps, drivers, sessions, weather, pit stops, stints, overtakes, race control, team radio, championship standings, results, starting grid, and more.
-- **Pydantic V2 Models** — Every response is validated and returned as a strict, typed model.
-- **Auto-Retry** — Exponential backoff on 429/5xx via `tenacity`.
-- **Rate Limiting** — Built-in client-side throttle (3 req/s free tier).
-- **Response Caching** — Optional in-memory TTL cache.
-- **Interactive TUI** — A live terminal dashboard (`pyopenf1 dashboard`).
-- **DataFrame Support** — Native integration with `pandas` and `polars`.
-- **Advanced Analytics** — High-level helpers for fastest laps and pit strategies.
-- **CLI Tool** — Query the API from your terminal.
-- **Production-Ready** — Custom exceptions, structured logging, connection pooling.
+- **100% API Coverage**: All 18 OpenF1 endpoints supported natively.
+- **Async & Sync Support**: Use `AsyncOpenF1Client` for high-throughput, or `OpenF1Client` for simple scripts.
+- **Pydantic V2 Models**: Every response is strictly validated and strongly typed.
+- **Interactive TUI Dashboard**: Launch a live terminal UI with `pyopenf1 dashboard`.
+- **Advanced Analytics**: Pre-built helpers for calculating fastest laps and extracting pit strategies.
+- **Data Science Ready**: Native `pandas` and `polars` integration.
+- **Resilient**: Smart retries and token-bucket rate limiting to prevent `429 Too Many Requests`.
+
+---
 
 ## 📦 Installation
+
+Install the base package via `pip` or `poetry`:
 
 ```bash
 pip install pyopenf1
 ```
 
-With optional extras:
+### 🔋 Supercharge with Extras
+Depending on your use-case, you can install optional dependencies for enhanced functionality:
+
 ```bash
-pip install pyopenf1[pandas]   # For pandas DataFrames
-pip install pyopenf1[polars]   # For polars DataFrames
-pip install pyopenf1[tui]      # For the interactive dashboard
-pip install pyopenf1[all]      # To install everything
+pip install "pyopenf1[pandas]"   # Export data to Pandas DataFrames
+pip install "pyopenf1[polars]"   # Export data to blazing-fast Polars DataFrames
+pip install "pyopenf1[tui]"      # Unlock the interactive terminal dashboard
+pip install "pyopenf1[all]"      # Install everything!
 ```
+
+---
 
 ## 🚀 Quickstart
 
-### Async (recommended)
+### The Async Way (Recommended)
+Unleash the full power of concurrent HTTP requests:
 
 ```python
 import asyncio
 from pyopenf1 import AsyncOpenF1Client
 
-async def main() -> None:
+async def main():
     async with AsyncOpenF1Client() as client:
-        # Fetch telemetry
+        # Fetch high-frequency telemetry data
         car_data = await client.telemetry.get_car_data(driver_number=1, session_key=9159)
+        
+        print(f"Loaded {len(car_data)} telemetry frames!")
         for entry in car_data[:5]:
-            print(f"Speed: {entry.speed} km/h | Gear: {entry.n_gear}")
-
-        # Fetch drivers
-        drivers = await client.drivers.get_drivers(session_key=9158)
-        for d in drivers[:3]:
-            print(f"#{d.driver_number} {d.full_name} - {d.team_name}")
+            print(f"Speed: {entry.speed} km/h | Gear: {entry.n_gear} | RPM: {entry.rpm}")
 
 asyncio.run(main())
 ```
 
-### Sync
+### The Sync Way
+Perfect for quick scripts or Jupyter notebooks:
 
 ```python
 from pyopenf1 import OpenF1Client
 
 with OpenF1Client() as client:
     drivers = client.drivers.get_drivers(session_key=9158)
-    for d in drivers:
-        print(f"{d.name_acronym} - {d.team_name}")
+    for driver in drivers:
+        print(f"{driver.name_acronym} - {driver.team_name} (Car {driver.driver_number})")
 ```
 
-### CLI
+---
 
-```bash
-pyopenf1 car-data --driver 1 --session 9159 --format table
-pyopenf1 drivers --session 9158 --format json
-pyopenf1 weather --meeting 1208 --format csv --output weather.csv
-```
+## 📊 Data Science & Analytics
 
-### DataFrames (Pandas & Polars)
+### Polars & Pandas Integration
+Stop writing boilerplate conversion code. `pyopenf1` does it for you:
 
 ```python
 from pyopenf1.ext.polars import to_polars
 from pyopenf1.ext.pandas import to_dataframe
 
+# Fetch Pydantic models
 data = await client.telemetry.get_car_data(driver_number=1)
 
-# To Polars
+# Convert to Polars
 df_pl = to_polars(data)
 
-# To Pandas
+# Convert to Pandas
 df_pd = to_dataframe(data)
 ```
 
 ### High-Level Analytics
+Let `pyopenf1` do the heavy lifting for complex race analysis:
 
 ```python
 from pyopenf1.analytics import Analytics
 
-async with AsyncOpenF1Client() as client:
-    analytics = Analytics(client)
-    
-    fastest = await analytics.get_fastest_lap(session_key=9158)
-    print(fastest.lap_duration)
+analytics = Analytics(client)
+
+# Find the fastest lap of the session
+fastest = await analytics.get_fastest_lap(session_key=9158)
+print(f"Fastest lap: {fastest.lap_duration} seconds")
+
+# Get pit stop strategies for the whole grid
+strategies = await analytics.get_pit_strategy(session_key=9158)
 ```
 
-### Jupyter Notebook Cookbooks
-Check out the `examples/cookbooks/` directory for interactive tutorials, like plotting track maps with telemetry data!
+---
 
-## ⚙️ Configuration
+## 🖥️ CLI & Terminal Dashboard
+
+You don't even need to write code to use `pyopenf1`! 
+
+### The TUI Dashboard
+Launch a beautiful, interactive terminal dashboard to view session data live:
+```bash
+pyopenf1 dashboard --session 9158
+```
+*(Note: Requires the `[tui]` extra)*
+
+### Command-Line Interface
+Query the API and export directly to CSV/JSON right from your terminal:
+```bash
+# Get weather data and save as CSV
+pyopenf1 weather --meeting 1208 --format csv --output weather.csv
+
+# Fetch driver info as pretty JSON
+pyopenf1 drivers --session 9158 --format json
+```
+
+---
+
+## ⚙️ Advanced Configuration
+
+Fine-tune your client for aggressive caching and optimized rate limits:
 
 ```python
 async with AsyncOpenF1Client(
     cache_ttl=300.0,        # Cache responses for 5 minutes
-    max_retries=5,          # Retry up to 5 times
-    max_per_second=6.0,     # Sponsor-tier rate limit
+    max_retries=5,          # Retry up to 5 times on server errors
+    max_per_second=6.0,     # Perfect for sponsor-tier API limits
     max_per_minute=60.0,
 ) as client:
     ...
 ```
 
-## 📡 Available Endpoints
+---
 
-| Namespace | Methods | OpenF1 Endpoints |
+## 📡 Available Endpoints Directory
+
+| Domain | Methods | OpenF1 Endpoints |
 |-----------|---------|------------------|
-| `client.telemetry` | `get_car_data()`, `get_location()` | `/car_data`, `/location` |
-| `client.sessions` | `get_sessions()`, `get_meetings()` | `/sessions`, `/meetings` |
-| `client.drivers` | `get_drivers()` | `/drivers` |
-| `client.timing` | `get_laps()`, `get_intervals()`, `get_positions()` | `/laps`, `/intervals`, `/position` |
-| `client.race` | `get_race_control()`, `get_pit_stops()`, `get_stints()`, `get_overtakes()` | `/race_control`, `/pit`, `/stints`, `/overtakes` |
-| `client.championship` | `get_drivers_championship()`, `get_teams_championship()` | `/championship_drivers`, `/championship_teams` |
-| `client.results` | `get_session_results()`, `get_starting_grid()` | `/session_result`, `/starting_grid` |
-| `client.weather` | `get_weather()` | `/weather` |
-| `client.team_radio` | `get_team_radio()` | `/team_radio` |
+| **Telemetry** | `get_car_data()`, `get_location()` | `/car_data`, `/location` |
+| **Sessions** | `get_sessions()`, `get_meetings()` | `/sessions`, `/meetings` |
+| **Drivers** | `get_drivers()` | `/drivers` |
+| **Timing** | `get_laps()`, `get_intervals()`, `get_positions()` | `/laps`, `/intervals`, `/position` |
+| **Race** | `get_race_control()`, `get_pit_stops()`, `get_stints()`, `get_overtakes()` | `/race_control`, `/pit`, `/stints`, `/overtakes` |
+| **Championship** | `get_drivers_championship()`, `get_teams_championship()` | `/championship_drivers`, `/championship_teams` |
+| **Results** | `get_session_results()`, `get_starting_grid()` | `/session_result`, `/starting_grid` |
+| **Weather** | `get_weather()` | `/weather` |
+| **Radio** | `get_team_radio()` | `/team_radio` |
 
-## 🏗️ Architecture
+---
 
-```
-pyopenf1/
-├── __init__.py              # Public API surface
-├── client.py                # AsyncOpenF1Client facade
-├── sync_client.py           # OpenF1Client (sync wrapper)
-├── cli.py                   # Click CLI
-├── exceptions.py            # Custom exception hierarchy
-├── core/
-│   ├── http_client.py       # httpx wrapper + retry + logging
-│   ├── rate_limiter.py      # Token-bucket rate limiter
-│   └── cache.py             # In-memory TTL cache
-├── models/                  # Pydantic V2 data models
-│   ├── telemetry.py         # CarData, Location
-│   ├── session.py           # Session, Meeting
-│   ├── driver.py            # Driver
-│   ├── timing.py            # Lap, Interval, Position
-│   ├── race.py              # RaceControl, Pit, Stint, Overtake
-│   ├── championship.py      # ChampionshipDriver, ChampionshipTeam
-│   ├── results.py           # SessionResult, StartingGrid
-│   ├── weather.py           # Weather
-│   └── team_radio.py        # TeamRadio
-├── endpoints/               # API endpoint classes
-│   ├── telemetry_api.py
-│   ├── session_api.py
-│   ├── driver_api.py
-│   ├── timing_api.py
-│   ├── race_api.py
-│   ├── championship_api.py
-│   ├── results_api.py
-│   ├── weather_api.py
-│   └── team_radio_api.py
-└── ext/
-    └── pandas.py            # Optional DataFrame integration
-```
+## 🤝 Contributing & Development
 
-## 🧪 Development
+We welcome contributions! To get started:
 
 ```bash
-# Install dev dependencies
-poetry install
+# Install dependencies using Poetry
+poetry install --all-extras
 
-# Lint & format
-poetry run ruff check .
-poetry run ruff format .
-
-# Type check
-poetry run mypy pyopenf1/
-
-# Test
+# Run the test suite
 poetry run pytest -v
 
-# Build docs
-poetry run mkdocs serve
+# Run the linter & formatter
+poetry run ruff check .
+poetry run ruff format .
 ```
+
+---
 
 ## 📄 License
 
-Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for details.
+This project is distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more details.
+
+<div align="center">
+  <br/>
+  <i>Built with ❤️ for F1 Data Enthusiasts</i>
+</div>
