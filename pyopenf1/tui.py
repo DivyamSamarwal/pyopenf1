@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import ClassVar
+from typing import Any, ClassVar
 
 from textual.app import App, ComposeResult
 from textual.widgets import DataTable, Footer, Header, Label
@@ -10,14 +10,14 @@ from textual.widgets import DataTable, Footer, Header, Label
 from pyopenf1.client import AsyncOpenF1Client
 
 
-class DashboardApp(App[None]):  # type: ignore[misc]
+class DashboardApp(App[None]):
     """A Textual TUI for viewing OpenF1 data.
 
     Currently supports viewing driver standings for a specific session.
     """
 
     TITLE = "🏎️ pyopenf1 Dashboard"
-    BINDINGS: ClassVar[list[tuple[str, str, str]]] = [
+    BINDINGS: ClassVar[list[Any]] = [
         ("d", "toggle_dark", "Toggle dark mode"),
         ("q", "quit", "Quit"),
     ]
@@ -53,7 +53,7 @@ class DashboardApp(App[None]):  # type: ignore[misc]
 
     def action_toggle_dark(self) -> None:
         """An action to toggle dark mode."""
-        self.dark = not self.dark  # type: ignore[has-type]
+        self.dark = not self.dark
 
 
 def run_dashboard(session_key: int | None = None) -> None:
